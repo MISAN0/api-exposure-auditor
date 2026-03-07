@@ -26,6 +26,57 @@ Each finding includes:
 - Recommended mitigation
 
 ---
+## Security Checks Explained
+
+The scanner performs several simple checks that can indicate potential API exposure risks.
+
+### Exposed Documentation Endpoints
+
+Many frameworks expose API documentation endpoints such as:
+
+- `/swagger`
+- `/api-docs`
+- `/openapi.json`
+
+If these endpoints are publicly accessible, attackers may be able to learn how the API works, including available routes, parameters, and request formats.
+
+### Missing Security Headers
+
+HTTP security headers help protect applications from common web attacks.
+
+The scanner checks for headers such as:
+
+- `Strict-Transport-Security`
+- `X-Frame-Options`
+- `X-Content-Type-Options`
+- `Referrer-Policy`
+
+Missing headers do not always indicate a vulnerability, but they can weaken the overall security posture of a service.
+
+### Permissive CORS Configuration
+
+Cross-Origin Resource Sharing (CORS) controls which domains are allowed to interact with an API.
+
+If an API allows:
+
+```markdown
+`Access-Control-Allow-Origin: *`
+```
+
+any website may be able to interact with the API through a browser.  
+In some cases this can enable cross-site data access risks.
+
+### Error Message Leakage
+
+Applications sometimes expose internal errors such as:
+
+- stack traces
+- framework names
+- database errors
+
+These messages can reveal useful information to attackers about the underlying system.
+
+The scanner sends a request to a non-existent path and checks if the response leaks debugging information.
 
 ## Tech Stack
 
@@ -39,6 +90,20 @@ This project uses a small number of Python libraries:
 The goal was to keep the tool lightweight and easy to understand.
 
 ---
+## Project Structure
+
+```bash
+api-exposure-auditor/
+│
+├── scanner.py # Main CLI entry point
+├── checks.py # Security checks implementation
+├── requirements.txt # Python dependencies
+├── example_report.json # Example scan output
+├── README.md
+│
+└── screenshots/
+└── scan_example.png
+```
 
 ## Installation
 
@@ -83,8 +148,9 @@ Running python --version produced an error.
 Example:
 ```bash
 Python was not found; run without arguments to install from the Microsoft Store
-Cause
+
 ```
+#### Cause
 
 Python was installed but the Python executable was not added to the system PATH.
 
@@ -176,6 +242,8 @@ Example structure:
 }
 ```
 ### Example Scan
+
+Example scan performed against a public testing endpoint.
 
 ![Scanner Example](screenshots/scan_example.png)
 
