@@ -1,0 +1,90 @@
+{
+    "scan_time": "2026-03-08T01:44:31.102955",
+    "total_findings": 12,
+    "findings": [
+        {
+            "check": "docs_endpoints",
+            "severity": "Medium",
+            "title": "Potentially exposed endpoint found at /swagger",
+            "evidence": "https://juice-shop.herokuapp.com/swagger returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Medium",
+            "title": "Potentially exposed endpoint found at /swagger/index.html",
+            "evidence": "https://juice-shop.herokuapp.com/swagger/index.html returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Medium",
+            "title": "Potentially exposed endpoint found at /api-docs",
+            "evidence": "https://juice-shop.herokuapp.com/api-docs returned HTTP 301",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Medium",
+            "title": "Potentially exposed endpoint found at /openapi.json",
+            "evidence": "https://juice-shop.herokuapp.com/openapi.json returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Medium",
+            "title": "Potentially exposed endpoint found at /swagger/v1/swagger.json",
+            "evidence": "https://juice-shop.herokuapp.com/swagger/v1/swagger.json returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Low",
+            "title": "Operational endpoint exposed at /health",
+            "evidence": "https://juice-shop.herokuapp.com/health returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Low",
+            "title": "Operational endpoint exposed at /status",
+            "evidence": "https://juice-shop.herokuapp.com/status returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Low",
+            "title": "Operational endpoint exposed at /actuator/health",
+            "evidence": "https://juice-shop.herokuapp.com/actuator/health returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "docs_endpoints",
+            "severity": "Low",
+            "title": "Operational endpoint exposed at /metrics",
+            "evidence": "https://juice-shop.herokuapp.com/metrics returned HTTP 200",
+            "recommendation": "Restrict public access to non-essential documentation or operational endpoints."
+        },
+        {
+            "check": "security_headers",
+            "severity": "Low",
+            "title": "Missing security header: Strict-Transport-Security",
+            "evidence": "Strict-Transport-Security was not present in the response headers.",
+            "recommendation": "Add HSTS to enforce HTTPS connections."
+        },
+        {
+            "check": "security_headers",
+            "severity": "Low",
+            "title": "Missing security header: Referrer-Policy",
+            "evidence": "Referrer-Policy was not present in the response headers.",
+            "recommendation": "Add a Referrer-Policy header to control referrer information leakage."
+        },
+        {
+            "check": "cors",
+            "severity": "Medium",
+            "title": "Permissive CORS configuration detected",
+            "evidence": "Access-Control-Allow-Origin=*, Access-Control-Allow-Credentials=None",
+            "recommendation": "Avoid permissive wildcard CORS unless the API is explicitly intended for unrestricted public cross-origin access."
+        }
+    ]
+}

@@ -175,6 +175,9 @@ Example structure:
   ]
 }
 ```
+### Example Scan
+
+![Scanner Example](screenshots/scan_example.png)
 
 ### Limitations
 
@@ -219,3 +222,17 @@ Possible improvements for this project include:
 - exporting reports in additional formats
 
 - adding concurrency for faster scans
+
+
+
+## Author
+
+**Mir Salman Nomaan**
+
+Final-year BICT student at the University of Tasmania with an interest in cybersecurity and secure software development.
+
+This project was created to explore common API security misconfigurations and to better understand how defensive security tools identify exposure risks.
+
+
+GitHub: https://github.com/MISAN0  
+LinkedIn: https://www.linkedin.com/in/nomaan00
